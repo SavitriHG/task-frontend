@@ -1,0 +1,348 @@
+/* Container and header */
+.sales-log-container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .sales-log-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .new-task-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .new-task-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Table */
+  .sales-log-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .sales-log-table th,
+  .sales-log-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+  }
+  
+  .sales-log-table th {
+    background-color: #f4f4f4;
+    text-align: left;
+  }
+  
+  /* Modal */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    width: 400px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .status-btn {
+    background: #f4f4f4;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .status-btn.active {
+    background: #ff9800;
+    color: white;
+  }
+  
+  .input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  input,
+  select,
+  textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .modal-buttons button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .modal-buttons button:last-child {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  
+  .sales-log-header .search-input {
+    width: 200px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height */
+    padding: 5px; /* Add some padding */
+    font-size: 14px; /* Adjust the font size */
+    border: 1px solid #ccc; /* Optional: Add a border */
+    border-radius: 4px; /* Optional: Rounded corners */
+    outline: none; /* Remove default focus outline */
+    transition: all 0.3s ease; /* Add a smooth hover effect */
+  }
+  
+  .sales-log-header .search-input:focus {
+    border-color: #007bff; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add focus shadow */
+  }
+  /* Modal Overlay */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's above all other elements */
+  }
+  
+  /* New Task Modal */
+  .new-task-modal {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  /* Modal Header */
+  .new-task-modal h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000000;
+  }
+  
+  /* Input Fields */
+  .new-task-modal input,
+  .new-task-modal select,
+  .new-task-modal textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #f9f9f9;
+    color: #333;
+  }
+  
+  .new-task-modal textarea {
+    resize: none;
+    height: 80px;
+  }
+  
+  /* Status Toggle Buttons */
+  .status-toggle {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .status-toggle button {
+    flex: 1;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .status-toggle .open-btn {
+    background-color: #ff8a33;
+    color: #ffffff;
+    border: none;
+  }
+  
+  .status-toggle .closed-btn {
+    background-color: #f3f3f3;
+    color: #aaa;
+    border: none;
+  }
+  
+  /* Save and Cancel Buttons */
+  .modal-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .modal-actions button {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .modal-actions .cancel-btn {
+    background: transparent;
+    color: #333;
+    border: 1px solid #ccc;
+  }
+  
+  .modal-actions .save-btn {
+    background: #0b465e;
+    color: #ffffff;
+    border: none;
+  }
+  
+  /* Dropdown Styling */
+  .new-task-modal select {
+    appearance: none; /* Removes the default dropdown arrow */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24'%3E%3Cpath fill='%23aaa' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 14px;
+  }
+  
+  /* Animation */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Phone Icon in Task Type */
+  .task-type-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .task-type-option span {
+    font-size: 18px; /* Adjust size of icons */
+  }
+  .options-container {
+    position: relative;
+  }
+  
+  .options-btn {
+    
+    color: #0a0808;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .options-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+    width: 150px;
+  }
+  
+  .options-dropdown button {
+    display: block;
+    width: 100%;
+    padding: 8px 10px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    color: #333;
+  }
+  
+  .options-dropdown button:hover {
+    background-color: #f0f0f0;
+  }
+  .status-container {
+    position: relative;
+  }
+  
+  .status-btn {
+   
+    color: #0a0606;
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .status-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 120px;
+    z-index: 100;
+  }
+  
+  .status-dropdown p {
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+    padding: 5px 0;
+   
+  }
