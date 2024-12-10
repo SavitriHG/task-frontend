@@ -45,7 +45,7 @@ const SalesLog = () => {
     };
   
     try {
-      const response = await axios.post("http://127.0.0.1:5000/tasks", taskData);
+      const response = await axios.post("https://backend-opal-rho.vercel.app/tasks", taskData);
       setData([...data, { ...taskData, id: response.data.taskId }]);
       setIsNewTaskOpen(false);
       setNewTask({

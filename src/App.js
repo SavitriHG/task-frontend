@@ -8,7 +8,7 @@ function App() {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:5000/tasks");
+        const response = await axios.get("https://backend-opal-rho.vercel.app/tasks");
         setData(response.data); // Ensure the response data matches your expectations
       } catch (error) {
         console.error("Error fetching tasks:", error);
