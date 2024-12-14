@@ -1,15 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SalesLog.css";
 import axios from "axios";
 
 const SalesLog = () => {
-  const [data, setData] = useState([
-    { date: "12/03/2019", entityName: "PQR Private Limited", taskType: "Meeting", time: "1:00 PM", contactPerson: "Sansa Stark", notes: "Lorem ipsum...", status: "Open" },
-    { date: "12/03/2019", entityName: "STU Private Limited", taskType: "Call", time: "1:00 PM", contactPerson: "Frodo Baggins", notes: "Lorem ipsum...", status: "Open" },
-    { date: "13/03/2019", entityName: "ABC Private Limited", taskType: "Call", time: "1:00 PM", contactPerson: "John Doe", notes: "Lorem ipsum...", status: "Closed" },
-    { date: "14/03/2019", entityName: "CBA Private Limited", taskType: "Video Call", time: "1:00 PM", contactPerson: "Han Solo", notes: "Lorem ipsum...", status: "Open" },
-  ]);
-
+  const [data, setData] = useState([]);
   const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
   const [newTask, setNewTask] = useState({
     entityName: "",
@@ -33,6 +27,20 @@ const SalesLog = () => {
     { type: "Video Call", icon: "🎥" },
   ];
 
+  // Fetch tasks from the backend when the component mounts
+  useEffect(() => {
+    const fetchTasks = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:5000/tasks");
+        setData(response.data); // Update the `data` state with the fetched tasks
+      } catch (error) {
+        console.error("Error fetching tasks:", error);
+      }
+    };
+
+    fetchTasks();
+  }, []);
+
   const handleAddTask = async () => {
     const taskData = {
       entityName: newTask.entityName,
@@ -43,9 +51,9 @@ const SalesLog = () => {
       notes: newTask.notes,
       status: newTask.status,
     };
-  
+
     try {
-      const response = await axios.post("https://backend-opal-rho.vercel.app/tasks", taskData);
+      const response = await axios.post("http://127.0.0.1:5000/tasks", taskData);
       setData([...data, { ...taskData, id: response.data.taskId }]);
       setIsNewTaskOpen(false);
       setNewTask({
@@ -254,8 +262,7 @@ const SalesLog = () => {
               placeholder="Contact Person"
               value={newTask.contactPerson}
               onChange={(e) =>
-                setNewTask({ ...newTask, contactPerson: e.target.value })
-              }
+                setNewTask({ ...newTask, contactPerson: e.target.value })}
             />
             <textarea
               placeholder="Notes"
